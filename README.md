@@ -16,7 +16,7 @@
 
 ## 环境要求
 
-Node.js **18+**（需要 `CompressionStream` / `DecompressionStream` / `crypto.subtle`）。推荐 Node 20 / 22。
+Node.js **18+**（用到内置 `zlib` 与 `crypto.subtle`）。推荐 Node 20 / 22。
 
 ## 安装
 
