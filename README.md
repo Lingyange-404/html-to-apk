@@ -25,7 +25,7 @@ Node.js **18+**（用到内置 `zlib` 与 `crypto.subtle`）。推荐 Node 20 / 
 npx html-to-apk-local --html ./index.html --name "我的工具"
 
 # 方式二：克隆后全局链接
-git clone https://github.com/liyuyang211/html-to-apk.git
+git clone https://github.com/Lingyange-404/html-to-apk.git
 cd html-to-apk
 npm link
 html2apk --help
@@ -117,7 +117,7 @@ template.apk ──解析 ZIP──> AndroidManifest.xml ──二进制 AXML �
 ## 开发
 
 ```bash
-git clone https://github.com/liyuyang211/html-to-apk.git
+git clone https://github.com/Lingyange-404/html-to-apk.git
 cd html-to-apk
 npm test          # 运行全部单元测试（Node 内置 test runner，零依赖）
 ```
@@ -141,4 +141,4 @@ html-to-apk/
 
 ## 许可证
 
-[MIT](./LICENSE) © 2026 liyuyang211
+[MIT](./LICENSE) © 2026 Lingyange-404

@@ -6,7 +6,7 @@
  * 此处抽出为 Node CLI：解析模板 APK -> 注入 HTML -> 改写 AndroidManifest
  * -> 重建 ZIP -> APK v2 自签名。全程不联网，不依赖 Gradle / Android SDK。
  *
- * 项目主页：https://github.com/liyuyang211/html-to-apk
+ * 项目主页：https://github.com/Lingyange-404/html-to-apk
  *
  * 用法：
  *   node html2apk.js --html <file.html> --name "应用名" [--pkg com.xxx.app]

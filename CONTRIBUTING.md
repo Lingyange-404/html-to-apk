@@ -16,7 +16,7 @@
 无需安装依赖，只要有 Node.js 18+：
 
 ```bash
-git clone https://github.com/liyuyang211/html-to-apk.git
+git clone https://github.com/Lingyange-404/html-to-apk.git
 cd html-to-apk
 npm test
 ```

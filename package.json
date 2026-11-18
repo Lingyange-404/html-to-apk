@@ -23,16 +23,16 @@
     "no-gradle",
     "single-file"
   ],
-  "author": "liyuyang211",
+  "author": "Lingyange-404",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liyuyang211/html-to-apk.git"
+    "url": "git+https://github.com/Lingyange-404/html-to-apk.git"
   },
   "bugs": {
-    "url": "https://github.com/liyuyang211/html-to-apk/issues"
+    "url": "https://github.com/Lingyange-404/html-to-apk/issues"
   },
-  "homepage": "https://github.com/liyuyang211/html-to-apk#readme",
+  "homepage": "https://github.com/Lingyange-404/html-to-apk#readme",
   "files": [
     "scripts",
     "tools",
