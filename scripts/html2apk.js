@@ -28,9 +28,9 @@ if (!globalThis.crypto || !globalThis.crypto.subtle) {
   globalThis.crypto = require('crypto').webcrypto;
 }
 const PackTool = require('./packer-core.js');
+const { loadTemplate } = require('./load-template.js');
 
 const TOOL_VERSION = '1.0.0';
-const TEMPLATE_APK = path.join(__dirname, 'template.apk');
 // 签名密钥默认放在用户主目录，不污染安装目录。
 // 用 --key 或环境变量 HTML2APK_KEY 可覆盖；同一密钥可覆盖安装升级。
 const DEFAULT_KEY_FILE = path.join(os.homedir(), '.html2apk', 'signing-key.json');
@@ -305,8 +305,8 @@ let keyFile; // 由 main() 初始化
   if (hr.note) log('· ' + hr.note);
   const hosts = extractHosts(new TextDecoder().decode(hr.bytes));
 
-  if (!fs.existsSync(TEMPLATE_APK)) fail('模板 APK 缺失：' + TEMPLATE_APK);
-  const templateU8 = new Uint8Array(fs.readFileSync(TEMPLATE_APK));
+  const templateU8 = loadTemplate(__dirname);
+  if (!templateU8) fail('模板缺失：需要 scripts/template.apk 或 scripts/template.apk.base64');
 
   let keyInfo = opts['reset-key'] ? null : loadKey();
   if (!keyInfo) log('生成 2048 位签名密钥（仅首次，约 1 秒）… → ' + keyFile);

@@ -127,9 +127,11 @@ npm test          # 运行全部单元测试（Node 内置 test runner，零依�
 ```
 html-to-apk/
 ├── scripts/
-│   ├── html2apk.js       # CLI 入口
-│   ├── packer-core.js    # 打包核心库（ZIP / AXML / v2 签名）
-│   └── template.apk      # WebView 模板 APK
+│   ├── html2apk.js            # CLI 入口
+│   ├── packer-core.js         # 打包核心库（ZIP / AXML / v2 签名）
+│   ├── load-template.js       # 模板加载器（二进制优先，回退 base64）
+│   ├── template.apk.base64    # WebView 模板 APK 的 base64 文本（仓库分发形态）
+│   └── template.apk           # 同上的二进制副本（本地可选，不入库）
 ├── tools/
 │   └── HTML转APK打包器.html  # 浏览器 GUI 版（自包含，离线可用）
 └── test/                 # 单元测试

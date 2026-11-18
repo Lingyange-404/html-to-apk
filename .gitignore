@@ -25,3 +25,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# 二进制模板由 template.apk.base64 生成，本地开发可选保留
+scripts/template.apk

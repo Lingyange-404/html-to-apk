@@ -11,9 +11,11 @@ if (!globalThis.crypto || !globalThis.crypto.subtle) {
 }
 
 const PackTool = require('../scripts/packer-core.js');
+const { loadTemplate } = require('../scripts/load-template.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const TEMPLATE = path.join(ROOT, 'scripts', 'template.apk');
+const SCRIPTS = path.join(ROOT, 'scripts');
+const TEMPLATE = loadTemplate(SCRIPTS);
 const enc = new TextEncoder();
 
 function asBuffer(u8) { return Buffer.from(u8.buffer, u8.byteOffset, u8.byteLength); }
@@ -26,7 +28,7 @@ test('crc32 匹配标准测试向量', () => {
 });
 
 test('parseZip 能解析模板 APK 并找到关键条目', () => {
-  const zip = PackTool.parseZip(new Uint8Array(fs.readFileSync(TEMPLATE)));
+  const zip = PackTool.parseZip(TEMPLATE.slice());
   const names = zip.entries.map(e => e.name);
   assert.ok(names.includes('AndroidManifest.xml'), '缺少 AndroidManifest.xml');
   assert.ok(names.includes('assets/index.html'), '缺少 assets/index.html');
@@ -49,7 +51,7 @@ test('buildZip / parseZip 往返保持内容与文件名', async () => {
 });
 
 test('AXML 解析/序列化往返保持字符串池与节点数', async () => {
-  const zip = PackTool.parseZip(new Uint8Array(fs.readFileSync(TEMPLATE)));
+  const zip = PackTool.parseZip(TEMPLATE.slice());
   const mf = zip.entries.find(e => e.name === 'AndroidManifest.xml');
   const doc = PackTool.parseAxml(await maybeInflate(mf));
   const stringsBefore = doc.pool.strings.slice();
@@ -60,7 +62,7 @@ test('AXML 解析/序列化往返保持字符串池与节点数', async () => {
 });
 
 test('buildApk 注入 HTML、改写 manifest 并生成 v2 签名 APK', async () => {
-  const template = new Uint8Array(fs.readFileSync(TEMPLATE));
+  const template = TEMPLATE.slice();
   const html = enc.encode('<!doctype html><html><head><meta charset="utf-8"></head><body><h1>你好</h1></body></html>');
 
   const result = await PackTool.buildApk(template, {
@@ -106,7 +108,7 @@ test('buildApk 注入 HTML、改写 manifest 并生成 v2 签名 APK', async () 
 });
 
 test('复用同一密钥可保持证书一致（覆盖升级前提）', async () => {
-  const template = new Uint8Array(fs.readFileSync(TEMPLATE));
+  const template = TEMPLATE.slice();
   const io = { inflate: inflateRaw, deflate: deflateRaw };
   const base = {
     packageName: 'com.example.reuse', appName: '复用测试',
