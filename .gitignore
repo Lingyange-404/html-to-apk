@@ -1,0 +1,27 @@
+# 签名密钥（含私钥，绝不能提交）
+signing-key.json
+*.key
+*.pem
+*.p12
+*.jks
+.h2a-key.json
+
+# 测试临时产物
+test/fixtures/*.apk
+test/fixtures/*-key.json
+test/fixtures/tmp-*
+tmp/
+*.apk.bak
+
+# 依赖与日志
+node_modules/
+npm-debug.log*
+yarn-error.log*
+*.log
+.DS_Store
+Thumbs.db
+
+# 编辑器与系统
+.vscode/
+.idea/
+*.swp

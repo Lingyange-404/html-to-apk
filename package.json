@@ -1,0 +1,44 @@
+{
+  "name": "html-to-apk-local",
+  "version": "1.0.0",
+  "description": "100% 离线把单文件 HTML 打包成 Android APK 的命令行工具（WebView 外壳 + v2 自签名，零 npm 依赖）",
+  "bin": {
+    "html2apk": "scripts/html2apk.js"
+  },
+  "main": "scripts/packer-core.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "html",
+    "apk",
+    "android",
+    "webview",
+    "offline",
+    "packager",
+    "html2apk",
+    "no-gradle",
+    "single-file"
+  ],
+  "author": "liyuyang211",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liyuyang211/html-to-apk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liyuyang211/html-to-apk/issues"
+  },
+  "homepage": "https://github.com/liyuyang211/html-to-apk#readme",
+  "files": [
+    "scripts",
+    "tools",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md"
+  ]
+}
